@@ -20,8 +20,27 @@
                     <el-button type="primary">添加用户</el-button>
                 </el-col>
             </el-row>
+            <!--  用户列表 表格 -->
+            <el-table :data="userList" border stripe>
+              <el-table-column type="index" ></el-table-column>
+              <el-table-column label="姓名" prop="name"></el-table-column>
+              <el-table-column label="账户" prop="username"></el-table-column>
+              <el-table-column label="联系方式" prop="phone"></el-table-column>
+              <el-table-column label="年龄" prop="age"></el-table-column>
+              <el-table-column label="ip地址" prop="ip"></el-table-column>
+              <el-table-column label="状态">
+                <!-- 作用域插槽获取当前行 -->
+                <template slot-scope="scope">
+                  <el-switch
+                    v-model="scope.row.status"
+                    active-color="#13ce66"
+                    inactive-color="#ff4949">
+                  </el-switch>
+                </template>
+              </el-table-column>
+              <el-table-column label="操作"></el-table-column>
+            </el-table>
         </el-card>
-
     </div>
 </template>
 
@@ -29,34 +48,36 @@
 export default {
   data () {
     return {
+      // 获取用户列表参数
+      queryData: {
+        username: '',
+        pageNo: 1,
+        pageSize: 10
+      },
       userList: [],
       total: 0
     }
   },
   created () {
-
+    // 发起调用用户分页接口
+    this.getUserPageList()
   },
   methods: {
+    // 调用用户分页接口方法
     getUserPageList () {
     // POST传参json格式
-      this.$http.post('/demo/user/getUserPageList', {
-        username: this.loginForm.username,
-        password: this.loginForm.password
-      }).then(result => {
+      this.$http.post('/demo/user/getUserPageList', this.queryData).then(result => {
         console.log(result)
         console.log(result.data)
         if (result.status === 200) {
           if (result.data.code === 200) {
-            // 登录成功，保存token到sessionStorage
-            window.sessionStorage.setItem('token', result.data.data)
-            // 通过编程式导航跳转到主页
-            this.$router.push('/home')
-            return this.$message.success('登录成功')
+            this.userList = result.data.data.records
+            this.total = result.data.data.total
           } else {
-            return this.$message.error('登录失败')
+            return this.$message.error('获取用户列表失败')
           }
         } else {
-          return this.$message.error('登录失败')
+          return this.$message.error('获取用户列表失败')
         }
       })
     }

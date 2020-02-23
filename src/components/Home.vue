@@ -11,7 +11,7 @@
       <!-- 侧边栏 -->
       <el-aside :width="iscollapse ? '64px' : '200px'">
         <div class="toggle-button" @click="toggle">|||</div>
-        <!-- 侧边栏菜单区 -->
+        <!-- 侧边栏菜单区 router表示开启路由模式； unique-opened表示只有一个菜单展开 -->
         <el-menu background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
         unique-opened :collapse="iscollapse" :collapse-transition="false" router
         :default-active="activePath">
@@ -60,6 +60,7 @@ export default {
   },
   created () {
     this.getMenuList()
+    // 从缓存中取高亮的path
     this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
@@ -119,9 +120,13 @@ export default {
 
 .el-aside {
   background-color: #545c64;
+  .el-menu {
+    // 解决右侧边缘不齐问题
+    border-right: none;
+  }
 }
 .el-main {
-  background-color: #fff;
+  background-color: #E8E8E8;
 }
 
 .iconfont {
