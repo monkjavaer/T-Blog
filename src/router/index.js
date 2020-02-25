@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
+import Blog from '../components/blog/Blog.vue'
+import BlogList from '../components/blog/BlogList.vue'
+import BlogDetail from '../components/blog/BlogDetail.vue'
 import User from '../components/user/User.vue'
 
 Vue.use(VueRouter)
@@ -31,6 +34,18 @@ const routes = [
       {
         path: '/user',
         component: User
+      },
+      {
+        path: '/blog',
+        component: Blog
+      },
+      {
+        path: '/blogList',
+        component: BlogList
+      },
+      {
+        path: '/blogDetail',
+        component: BlogDetail
       }
     ]
   }

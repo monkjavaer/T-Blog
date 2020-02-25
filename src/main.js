@@ -6,7 +6,8 @@ import './plugins/element.js'
 import './assets/css/global.css'
 // 导入字体图标
 import './assets/fonts/iconfont.css'
-
+// highlight.js代码高亮插件
+import Highlight from './plugins/highlight'
 // 导入请求包axios
 import axios from 'axios'
 // 配置请求路径
@@ -18,6 +19,7 @@ axios.interceptors.request.use(config => {
   // 必须返回
   return config
 })
+Vue.use(Highlight)
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false

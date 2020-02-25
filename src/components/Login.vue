@@ -64,14 +64,11 @@ export default {
           // 校验通过发起后台请求
           // const { data: res } = await this.$http.post('login', this.loginForm)
           // if (res.meta.status === 200) {
-          //   console.log('登录成功')
           // }
 
           // GET 方式
           // 路径拼接参数
           // this.$http.get('/loginGet?username=' + this.loginForm.username).then(function (result) {
-          //   console.log(result)
-          //   console.log(result.data)
           // })
 
           // params传参数
@@ -80,8 +77,6 @@ export default {
           //     username: this.loginForm.username
           //   }
           // }).then(function (result) {
-          //   console.log(result)
-          //   console.log(result.data)
           // })
 
           // post 表单提交
@@ -89,8 +84,6 @@ export default {
           // params.append('username', this.loginForm.username)
           // params.append('password', this.loginForm.password)
           // this.$http.post('/loginPostForm', params).then(function (result) {
-          //   console.log(result)
-          //   console.log(result.data)
           // })
 
           // POST传参json格式
@@ -98,8 +91,6 @@ export default {
             username: this.loginForm.username,
             password: this.loginForm.password
           }).then(result => {
-            console.log(result)
-            console.log(result.data)
             if (result.status === 200) {
               if (result.data.code === 200) {
                 // 登录成功，保存token到sessionStorage

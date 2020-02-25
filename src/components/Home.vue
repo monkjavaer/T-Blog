@@ -77,7 +77,6 @@ export default {
       } else {
         return this.$message.error(res.message)
       }
-      console.log(res)
     },
     // 菜单折叠展开
     toggle () {
@@ -126,7 +125,7 @@ export default {
   }
 }
 .el-main {
-  background-color: #E8E8E8;
+  background-color: #F7F7F7;
 }
 
 .iconfont {
