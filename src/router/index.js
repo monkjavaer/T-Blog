@@ -7,6 +7,10 @@ import Blog from '../components/blog/Blog.vue'
 import BlogList from '../components/blog/BlogList.vue'
 import BlogDetail from '../components/blog/BlogDetail.vue'
 import User from '../components/user/User.vue'
+import Article from '../components/front/Article.vue'
+import FrontBlog from '../components/front/FrontBlog.vue'
+import About from '../components/front/About.vue'
+import FrontBlogDetail from '../components/front/FrontBlogDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -14,7 +18,28 @@ const routes = [
   {
     path: '/',
     /* 斜线重定向 */
-    redirect: '/login'
+    redirect: '/article'
+  },
+  {
+    path: '/article',
+    component: Article,
+    // 访问article时重定向到welcome
+    redirect: '/frontBlog',
+    // 子路由
+    children: [
+      {
+        path: '/about',
+        component: About
+      },
+      {
+        path: '/frontBlog',
+        component: FrontBlog
+      },
+      {
+        path: '/frontBlogDetail',
+        component: FrontBlogDetail
+      }
+    ]
   },
   {
     path: '/login',
@@ -61,7 +86,8 @@ const router = new VueRouter({
 // next 是一个函数，表示放行
 router.beforeEach((to, from, next) => {
   // next('/login')  强制跳转
-  if (to.path === '/login') {
+  if (to.path === '/login' || to.path === '/article' ||
+  to.path === '/test' || to.path === '/frontBlog' || to.path === '/frontBlogDetail' || to.path === '/about') {
     return next()
   }
   // 获取token

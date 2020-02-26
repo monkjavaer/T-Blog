@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Main, Menu,
   Submenu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn, Switch, Tooltip,
-  Pagination, Dialog, MessageBox } from 'element-ui'
+  Pagination, Dialog, MessageBox, Link, Timeline, TimelineItem, Backtop } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -25,6 +25,10 @@ Vue.use(Switch)
 Vue.use(Tooltip)
 Vue.use(Pagination)
 Vue.use(Dialog)
+Vue.use(Link)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
+Vue.use(Backtop)
 // 挂载弹框组件到Vue原型对象上
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
