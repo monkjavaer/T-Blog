@@ -11,7 +11,7 @@ import Highlight from './plugins/highlight'
 // 导入请求包axios
 import axios from 'axios'
 // 配置请求路径
-axios.defaults.baseURL = 'http://127.0.0.1:8090/api/'
+axios.defaults.baseURL = 'http://47.105.75.209:8081/api/'
 // 请求统一加上token
 axios.interceptors.request.use(config => {
   console.log(config)
